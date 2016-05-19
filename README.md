@@ -9,7 +9,9 @@ Some features in this project:
 ## Usage
 First, clone this repository:  
 `git clone https://github.com/minhchu/slim-landing-page.git`  
-Then `cd` to this project folder and create `.env`:  
+Then `cd` to this project folder and install dependencies:  
+`composer install`  
+Create `.env` file:  
 `cp .env.example .env`  
 Edit variable values in `.env` and now serve your application using PHP built-in server:  
 `php -S localhost:8000 -t public`  
