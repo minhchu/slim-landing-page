@@ -1,13 +1,13 @@
 <?php
 
-$app->get('/', function($request, $response) {
+$app->get('/', function ($request, $response) {
     return $this->view->render($response, 'index.phtml', [
-        'csrf_name' => $request->getAttribute('csrf_name'),
-        'csrf_value' => $request->getAttribute('csrf_value')
+        'csrf_name'  => $request->getAttribute('csrf_name'),
+        'csrf_value' => $request->getAttribute('csrf_value'),
     ]);
 });
 
-$app->post('/submit', function($request, $response) {
+$app->post('/submit', function ($request, $response) {
     $data = $request->getParsedBody();
 
     $name = isset($data['name']) ? escape($data['name']) : 'Anonymous';
@@ -15,7 +15,7 @@ $app->post('/submit', function($request, $response) {
     $address = isset($data['address']) ? escape($data['address']) : 'No address';
     $description = isset($data['description']) ? escape($data['description']) : '';
 
-    $mail = new \PHPMailer;
+    $mail = new \PHPMailer();
 
     $mail->isSMTP();
     $mail->SMTPDebug = 2;
@@ -32,9 +32,9 @@ $app->post('/submit', function($request, $response) {
     $mail->Subject = 'New Order';
     $mail->Body = "{$name} \n {$phone} \n {$address} \n {$description}";
 
-    if(! $mail->send()) {
+    if (!$mail->send()) {
         $this->flash->error('Email cannot be sent');
-        $this->logger->addError('Message could not be sent. Mailer Error: ' . $mail->ErrorInfo);
+        $this->logger->addError('Message could not be sent. Mailer Error: '.$mail->ErrorInfo);
     } else {
         $this->flash->success('Order successfully');
     }
