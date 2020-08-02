@@ -2,7 +2,7 @@
 
 $container = $app->getContainer();
 
-$container['flash'] = function($container) {
+$container['flash'] = function ($container) {
     return new \Plasticbrain\FlashMessages\FlashMessages();
 };
 
@@ -10,8 +10,8 @@ $container['view'] = function ($container) {
     $settings = $container->get('settings')['view'];
 
     $view = new \Slim\Views\Twig($settings['template_path'], [
-        'cache' => $settings['cache_path'],
-        'auto_reload' => $settings['auto_reload']
+        'cache'       => $settings['cache_path'],
+        'auto_reload' => $settings['auto_reload'],
     ]);
 
     $view->addExtension(new \Slim\Views\TwigExtension(
