@@ -3,7 +3,7 @@
         "slim/slim": "^3.3",
         "slim/csrf": "^0.6.0",
         "slim/twig-view": "^2.1",
-        "phpmailer/phpmailer": "^5.2",
+        "phpmailer/phpmailer": "^6.1",
         "monolog/monolog": "^1.19",
         "plasticbrain/php-flash-messages": "^1.0",
         "vlucas/phpdotenv": "^2.2"
